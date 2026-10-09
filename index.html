@@ -32,6 +32,23 @@ body{
 #progress{position:fixed; top:0; left:0; right:0; height:3px; z-index:300; pointer-events:none}
 #progressFill{height:100%; width:0; background:linear-gradient(90deg,var(--rose),var(--amber),var(--cyan)); border-radius:0 3px 3px 0}
 #bg-dots{position:fixed; inset:0; z-index:0; pointer-events:none}
+/* decorative background typography watermark */
+#bgtext{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.bgline{position:absolute;left:-25%;width:150%;transform:rotate(-20deg)}
+.bgtrack{display:inline-block;white-space:nowrap;animation:drift var(--spd,120s) linear infinite}
+.bgline.rev .bgtrack{animation-direction:reverse}
+.bgtrack b{font-family:inherit;font-weight:900;letter-spacing:.04em;color:transparent;
+  -webkit-text-stroke:1px var(--sc,rgba(251,113,133,.13))}
+.bgtrack i{font-style:normal;color:transparent;-webkit-text-stroke:1px rgba(168,160,148,.10);margin:0 .7em}
+.w1{--sc:rgba(251,113,133,.14)}
+.w2{--sc:rgba(251,191,36,.13)}
+@keyframes drift{to{transform:translateX(-50%)}}
+@media(max-width:900px){
+  .bgline.mhide{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .bgtrack{animation:none}
+}
 .shell{display:flex; min-height:100vh; position:relative; z-index:1}
 .sidebar{
   position:fixed; top:0; left:0; bottom:0; width:252px; z-index:100;
@@ -99,6 +116,9 @@ h2{font-size:clamp(24px,3vw,32px); letter-spacing:-.6px; font-weight:800}
 .ch-sub strong{color:var(--text)}
 .card{background:linear-gradient(180deg,var(--card),var(--card2)); border:1px solid var(--line); border-radius:var(--radius); padding:24px; transition:background-color .45s ease, border-color .45s ease}
 .card h3{font-size:17px; margin-bottom:8px}
+.check{list-style:none; margin:10px 0 4px; padding:0}
+.check li{display:flex; gap:12px; margin:9px 0; color:var(--muted); font-size:14.5px; align-items:flex-start}
+.check li::before{content:"☐"; flex:0 0 auto; color:var(--rose); font-size:18px; line-height:1.4}
 .card p{color:var(--muted); font-size:15px; margin:8px 0}
 .card p strong, .card li strong{color:var(--text)}
 .card ul{margin:10px 0 4px 20px; color:var(--muted); font-size:15px}
@@ -210,6 +230,7 @@ footer strong{color:var(--muted)}
 <body>
 <div id="progress" aria-hidden="true"><div id="progressFill"></div></div>
 <canvas id="bg-dots" aria-hidden="true"></canvas>
+<div id="bgtext" aria-hidden="true"><div class="bgline" style="top:4%;font-size:6rem;--spd:138s"><div class="bgtrack"><span><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i></span><span aria-hidden="true"><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i></span></div></div><div class="bgline rev" style="top:22%;font-size:3.2rem;--spd:106s"><div class="bgtrack"><span><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i></span><span aria-hidden="true"><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i></span></div></div><div class="bgline" style="top:40%;font-size:7rem;--spd:162s"><div class="bgtrack"><span><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i></span><span aria-hidden="true"><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i></span></div></div><div class="bgline rev mhide" style="top:58%;font-size:2.8rem;--spd:119s"><div class="bgtrack"><span><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i></span><span aria-hidden="true"><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i></span></div></div><div class="bgline mhide" style="top:76%;font-size:6rem;--spd:150s"><div class="bgtrack"><span><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i></span><span aria-hidden="true"><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i></span></div></div><div class="bgline rev mhide" style="top:90%;font-size:3rem;--spd:100s"><div class="bgtrack"><span><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i></span><span aria-hidden="true"><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i><b class="w1">PUSHING</b><i>·</i><b class="w2">P</b><i>·</i></span></div></div></div>
 <div class="shell">
 <aside class="sidebar" id="sidebar" aria-label="Site navigation">
   <div class="side-brand"><span class="drop">🎬</span> Unboxing Video</div>
@@ -224,7 +245,8 @@ footer strong{color:var(--muted)}
     <a href="#ch7"><span class="n">07</span>Report fast</a>
     <a href="#ch8"><span class="n">08</span>Keep the original</a>
     <a href="#ch9"><span class="n">09</span>Mistakes</a>
-    <a href="#ch10"><span class="n">✦</span>Quiz</a>
+    <a href="#ch10"><span class="n">10</span>Checklist</a>
+    <a href="#ch11"><span class="n">✦</span>Quiz</a>
   </nav>
   <div class="side-progress" aria-hidden="true">
     <div class="sp-head"><span>Reading</span><span id="sidePct">0%</span></div>
@@ -239,7 +261,7 @@ footer strong{color:var(--muted)}
 <div class="side-backdrop" id="sideBackdrop"></div>
 <main>
 <div class="mrail" id="mrail">
-  <a href="#ch1">01 · Why</a><a href="#ch2">02 · Setup</a><a href="#ch3">03 · Sealed box</a><a href="#ch4">04 · One take</a><a href="#ch5">05 · Items</a><a href="#ch6">06 · Empty box</a><a href="#ch7">07 · Report</a><a href="#ch8">08 · Keep it</a><a href="#ch9">09 · Mistakes</a><a href="#ch10">✦ · Quiz</a>
+  <a href="#ch1">01 · Why</a><a href="#ch2">02 · Setup</a><a href="#ch3">03 · Sealed box</a><a href="#ch4">04 · One take</a><a href="#ch5">05 · Items</a><a href="#ch6">06 · Empty box</a><a href="#ch7">07 · Report</a><a href="#ch8">08 · Keep it</a><a href="#ch9">09 · Mistakes</a><a href="#ch10">10 · Checklist</a><a href="#ch11">✦ · Quiz</a>
 </div>
 <div class="wrap">
 
@@ -266,7 +288,7 @@ footer strong{color:var(--muted)}
     <div class="card rv">
       <p>A proper unboxing video proves two things: <strong>what showed up, and what shape it was in</strong>. Done right, it lays down a clear timeline — the box sealed on camera, the box opened on camera, each item lifted out and shown, and the empty box shown at the end.</p>
       <p>That timeline is what turns a dispute into a reviewable record. When something is missing, broken, or leaking, everyone involved can look at the same footage instead of trading guesses.</p>
-      <div class="warn"><strong>Without it, everything is a guess.</strong> Was the item never packed? Damaged on the road? Counted wrong? Taken after delivery? The video can't answer every question by itself — but it gives any investigation solid ground to stand on. Some sellers won't even open a missing-item case without video evidence, so it's worth knowing what yours asks for.</div>
+      <div class="warn"><strong>Without it, everything is a guess.</strong> Was the item never packed? Damaged on the road? Counted wrong? Taken after delivery? The video can't answer every question by itself — but it gives any investigation solid ground to stand on. Some sellers won't even open a missing-item case without video evidence, so it's worth knowing what your seller asks for.</div>
     </div>
   </section>
 
@@ -289,10 +311,10 @@ footer strong{color:var(--muted)}
   <!-- 03 -->
   <section class="chapter" id="ch3">
     <div class="ch-head"><span class="ch-num">03</span><h2>Film the sealed box</h2></div>
-    <p class="ch-sub">Steps 1–3: prove how it arrived before you touch it.</p>
+    <p class="ch-sub">Four steps: prove how it arrived — then open it on camera.</p>
     <div class="grid c2">
       <div class="card stepcard rv"><div class="sn">1</div><div><h4>Show the whole exterior</h4><p>Before any cuts or tears, film <strong>every side</strong> of the package: shipping labels, tracking stickers, tape lines, and seals. Pan slowly and give the camera time to focus on each face.</p></div></div>
-      <div class="card stepcard rv"><div class="sn">2</div><div><h4>Linger on any damage</h4><p>Crushed corners, dents, tears, punctures, wet patches, broken seals — <strong>film each one from two or three angles</strong>. This is the damage that happened before you, so capture it before you.</p></div></div>
+      <div class="card stepcard rv"><div class="sn">2</div><div><h4>Linger on any damage</h4><p>Crushed corners, dents, tears, punctures, wet patches, broken seals — <strong>film each one from two or three angles</strong>. This damage happened before the box reached you — capture it before you open anything.</p></div></div>
       <div class="card stepcard rv"><div class="sn">3</div><div><h4>Prove the seal is intact</h4><p>Show the tape is uncut, the seals unbroken, the wrap undisturbed. <strong>Rotate the box slowly</strong> so every side gets its moment — an unbroken seal on camera is what proves nobody opened it before you.</p></div></div>
       <div class="card stepcard rv"><div class="sn">4</div><div><h4>Then open it on camera</h4><p>Cut the tape and open the box <strong>without leaving the frame</strong>. Show the inside as first seen — padding, documents, and contents exactly as they sat when the box was opened.</p></div></div>
     </div>
@@ -328,7 +350,7 @@ footer strong{color:var(--muted)}
       <p>Several identical items? <strong>Group them together in frame</strong> so the number is undeniable — and count aloud while recording: <em>"one, two, three, four."</em> A visible pile plus a spoken count leaves no room for argument.</p>
     </div>
     <div class="card rv" style="margin-top:16px">
-      <h3>🔍 Give damage extra time</h3>
+      <h3>🔍 Give extra time</h3>
       <p>Something arrived broken, leaking, opened, or just wrong? <strong>Spend extra time on it from several angles</strong> before moving on. Don't assume it's "obvious from a distance" — if a detail could matter later, get it close to the lens and make sure it's sharp.</p>
     </div>
   </section>
@@ -399,8 +421,52 @@ footer strong{color:var(--muted)}
     </div>
   </section>
 
-  <!-- 10 quiz -->
+  <!-- 10 checklist -->
   <section class="chapter" id="ch10">
+    <div class="ch-head"><span class="ch-num">10</span><h2>Master checklist</h2></div>
+    <p class="ch-sub">Run through this every time. Future-you says thanks.</p>
+    <div class="grid c3">
+      <div class="card rv">
+        <h3>🎬 Before opening</h3>
+        <ul class="check">
+          <li>Start recording</li>
+          <li>Show the entire package</li>
+          <li>Show shipping information</li>
+          <li>Show seals and tape</li>
+          <li>Document visible damage</li>
+          <li>Camera stable and focused</li>
+        </ul>
+      </div>
+      <div class="card rv">
+        <h3>📦 During the unboxing</h3>
+        <ul class="check">
+          <li>Keep the package in frame</li>
+          <li>Open the package on camera</li>
+          <li>Show the inside packaging</li>
+          <li>Remove items individually</li>
+          <li>Show labels clearly</li>
+          <li>Verify quantities</li>
+          <li>Document damage or abnormalities</li>
+          <li>Don't pause or stop recording</li>
+        </ul>
+      </div>
+      <div class="card rv">
+        <h3>🏁 At the end</h3>
+        <ul class="check">
+          <li>Remove all contents</li>
+          <li>Show the empty package</li>
+          <li>Show all items together</li>
+          <li>Take extra photos if needed</li>
+          <li>Save the original video</li>
+          <li>Keep the original packaging</li>
+          <li>Report problems promptly</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 quiz -->
+  <section class="chapter" id="ch11">
     <div class="ch-head"><span class="ch-num">✦</span><h2>Quick quiz</h2></div>
     <p class="ch-sub">One question — how useful was this guide?</p>
     <div class="card quiz rv" id="quizCard">
@@ -433,7 +499,6 @@ footer strong{color:var(--muted)}
 <footer>
   <div class="wrap">
     <div class="disclaimer"><strong>📋 Educational reference only.</strong> This page covers general practices for documenting parcel deliveries. It isn't legal advice and isn't connected to any seller or carrier.</div>
-    <p><strong>How to Film an Unboxing Video Correctly</strong> — one unbroken recording, sealed box to empty box: setup, filming the sealed package, the continuous take, item-by-item documentation, quantity checks, damage evidence, reporting problems, keeping the original file, common mistakes, and a terminology glossary.</p>
   </div>
 </footer>
 </main>
